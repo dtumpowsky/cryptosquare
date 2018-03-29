@@ -1,4 +1,4 @@
-# _Roman Numerals_
+# _Cryptosquare_
 
 #### _{Brief description of application}, {Date of current version}_
 
@@ -6,14 +6,14 @@
 
 ## Description
 
--number assigned to letter
--add the value of all the symbols
--character can only repeat 3 times in a license, 3 times then change
--4th number in line, switch to subtraction. Place "I" before next symbol
--separate ones, tens, hundreds, and thousands. ie... 99 = XCIX, not IC-- XLIX=49, not IL-- XXXIX=39
--symbols divisible by 5 on their own, excludes "I"
--cannot count higher than 3,999
--
+-if the number of characters are a perfect square, the square root is the number of columns are rows
+-output is grouped into 5 letter segments
+
+example input: "cheese"
+example output: "cehse e"
+
+example input: "cheese parties"
+example output: "csrsh etepi eae"
 
 
 ## Setup/Installation Requirements
