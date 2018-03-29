@@ -20,6 +20,7 @@ $(document).ready(function() {
     resetVariables();
     event.preventDefault();
     var sentence = $("input#decimal").val();
+    sentence=sentence.toLowerCase();
     sentence=sentence.replace(/\s/g, ''); //removes spaces
     letters=sentence.split("")
     length=letters.length;
