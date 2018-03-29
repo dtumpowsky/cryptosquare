@@ -2,7 +2,7 @@ var romanNumeral;
 var tens;
 var romanString;
 
-function ones(remainder){
+function onesFunction(remainder){
   if (remainder===1){
     romanString=romanString+"I";
   } else if (remainder===2){
@@ -24,7 +24,45 @@ function ones(remainder){
   }
 }
 
+function tensFunction(tensNum){
+  if (tensNum===0){}
+  else if (tensNum===4){
+    romanString=romanString+"XL";
+  } else if(tensNum==9){
+    romanString=romanString+"XC";
+  }
+  else if (tensNum>4){
+    tensNum=tensNum-5;
+    romanString=romanString+"L";
+      for (i=1; i<=tensNum; i++){
+        romanString=romanString+"X";
+      }
+  }  else{
+    for (i=1; i<=tensNum; i++){
+      romanString=romanString+"X";
+    }
+  }
+}
 
+function hundredsFunction(hundredsNum){
+  if (hundredsNum===0){}
+  else if (hundredsNum===4){
+    romanString=romanString+"CD";
+  } else if(hundredsNum==9){
+    romanString=romanString+"CM";
+  }
+  else if (hundredsNum>4){
+    hundredsNum=hundredsNum-5;
+    romanString=romanString+"D";
+      for (i=1; i<=hundredsNum; i++){
+        romanString=romanString+"C";
+      }
+  }  else{
+    for (i=1; i<=hundredsNum; i++){
+      romanString=romanString+"C";
+    }
+  }
+}
 
 $(document).ready(function() {
   $("form#converter").submit(function(event) {
@@ -32,27 +70,16 @@ $(document).ready(function() {
 
     var number = parseInt($("input#decimal").val());
     romanString="";
+
+    hundreds=parseInt(number/100);
+    hundredsFunction(hundreds);
+    number=number%100;
+
     tens=parseInt(number/10);
-    console.log(tens);
-    if (tens===0){}
-    else if (tens===4){
-      romanString=romanString+"XL";
-    } else if(tens==9){
-      romanString=romanString+"XC";
-    }
-    else if (tens>4){
-      tens=tens-5;
-      romanString=romanString+"L";
-        for (i=1; i<=tens; i++){
-          romanString=romanString+"X";
-        }
-    }  else{
-      for (i=1; i<=tens; i++){
-        romanString=romanString+"X";
-      }
-    }
-    remainder=number%10;
-    ones(remainder);
+    tensFunction(tens);
+
+    ones=number%10;
+    onesFunction(ones);
 
 
 
