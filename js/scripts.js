@@ -9,21 +9,22 @@ var finalString="";
 var i=0;
 var j=0;
 var counter=0;
-
+function resetVariables(){
+  //letters=[];
+  //finalLetters=[];
+  finalString="";
+  counter=0;
+}
 $(document).ready(function() {
   $("form#converter").submit(function(event) {
+    resetVariables();
     event.preventDefault();
     var sentence = $("input#decimal").val();
     sentence=sentence.replace(/\s/g, ''); //removes spaces
-
     letters=sentence.split("")
-
-    console.log("size of letters array" +letters.length);
-
     length=letters.length;
     squaredNum=Math.sqrt(length);
     intSquare=parseInt(squaredNum);
-    console.log(squaredNum);
 
     if (squaredNum%1==0){ //if the number of characters has an even square
       rows=squaredNum;
@@ -40,49 +41,38 @@ $(document).ready(function() {
       }
     }
 
-    console.log ("The square needs " +rows+ " rows and "+columns+" columns.");
-
     letters.reverse();
+
+    //reads the letters into a two dimensional array that is similar to a cryptosquare
     while (letters.length!=0){
-    for(i=0; i<rows;i++){
-      finalLetters[i]=new Array(j); //makes an array of arrays
-      for(j=0; j<columns; j++){
-        if (letters.length===0){
-          finalLetters[i][j]="";
+      for(i=0; i<rows;i++){
+        finalLetters[i]=new Array(j); //makes an array of arrays
+        for(j=0; j<columns; j++){
+          if (letters.length===0){
+            finalLetters[i][j]="";
+          } else {
+            finalLetters[i][j]=letters.pop();
+          }
         }
+      }
+    }
+
+    //reads through the cryptosquare from top to bottom, then left to right
+    for(x=0; x<columns; x++) {
+      for(y=0; y<rows; y++) {
+        if(finalLetters[y][x]===""){}
         else{
-          finalLetters[i][j]=letters.pop();
+          counter++;
+          if (counter%5==0) { //adds spaces after every 5th letter
+            finalString=finalString + finalLetters[y][x] + " ";
+          } else {
+            finalString=finalString + finalLetters[y][x];
+          }
         }
 
       }
     }
-  }
-
-
-    for(x=0; x<columns; x++)
-    {
-      for(y=0; y<rows; y++)
-      {
-        if (counter%5==0){
-          finalString=finalString+" "+ finalLetters[y][x];
-        }
-        else{
-          finalString=finalString + finalLetters[y][x];
-        }
-        counter++;
-      }
-    }
-
-
-
-
-    console.log(finalLetters);
-    console.log(finalString);
-
-
-
-
-    $("#result").text(finalString);
+    $("#result").text(finalString); //displays final result
 
   });
 });

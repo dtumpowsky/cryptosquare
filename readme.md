@@ -1,8 +1,8 @@
 # _Cryptosquare_
 
-#### _{Brief description of application}, {Date of current version}_
+#### _Application that takes user input and outputs a Cryptosquare puzzle, {3/30/18}_
 
-#### By _**{List of contributors}**_
+#### By _**Alex Nobel, David Tumpowsky**_
 
 ## Description
 
