@@ -64,12 +64,27 @@ function hundredsFunction(hundredsNum){
   }
 }
 
+function thousandsFunction(thousandsNum){
+  if (thousandsNum===0){}
+
+  else{
+    for (i=1; i<=thousandsNum; i++){
+      romanString=romanString+"M";
+    }
+  }
+}
+
+
 $(document).ready(function() {
   $("form#converter").submit(function(event) {
     event.preventDefault();
 
     var number = parseInt($("input#decimal").val());
     romanString="";
+
+    thousands=parseInt(number/1000);
+    thousandsFunction(thousands);
+    number=number%1000;
 
     hundreds=parseInt(number/100);
     hundredsFunction(hundreds);
